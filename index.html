@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Which Late-Night Vibe Are You?</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #121212; color: #fff; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        .card { background: #1e1e1e; padding: 30px; border-radius: 12px; width: 100%; max-width: 500px; box-shadow: 0 4px 20px rgba(0,0,0,0.6); }
+        h2 { color: #bb86fc; margin-top: 0; text-align: center; }
+        p { color: #b0b0b0; text-align: center; margin-bottom: 25px; }
+        label { display: block; margin-top: 20px; font-weight: bold; color: #e0e0e0; }
+        input, select, button { width: 100%; padding: 12px; margin-top: 8px; border-radius: 6px; border: none; font-size: 15px; box-sizing: border-box; }
+        input, select { background: #2a2a2a; color: #fff; border: 1px solid #333; }
+        input:focus, select:focus { outline: none; border-color: #bb86fc; }
+        button { background: #bb86fc; color: #121212; cursor: pointer; font-weight: bold; margin-top: 30px; transition: background 0.2s; }
+        button:hover { background: #9965f4; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Which Late-Night Vibe Are You?</h2>
+        <p>Answer honestly to expose your true friend group archetype.</p>
+        
+        <form action="https://formspree.io/f/xppqdvne" method="POST">
+            
+            <label>Your Name / Nickname:</label>
+            <input type="text" name="Friend_Name" required placeholder="Enter your name so I know who you are">
+            
+            <label>1. Friday night at 10 PM, what are you doing?</label>
+            <select name="Q1_Friday_Night" required>
+                <option value="" disabled selected>Select an option...</option>
+                <option value="Chaos Gremlin">Scrolling TikTok / waiting for crazy plans</option>
+                <option value="Cozy NPC">Already in pajamas under a blanket</option>
+                <option value="Overthinker">Staring at ceiling worrying about unread emails</option>
+                <option value="Main Character">Full skincare routine & lip-syncing into hairbrush</option>
+            </select>
+
+            <label>2. Stranded on a deserted island, your role is:</label>
+            <select name="Q2_Island_Role" required>
+                <option value="" disabled selected>Select an option...</option>
+                <option value="Chaos Gremlin">Building a makeshift fire with sketchy materials</option>
+                <option value="Cozy NPC">Finding the best shaded spot to nap and eating snacks</option>
+                <option value="Overthinker">Calculating wind velocity and escape probabilities</option>
+                <option value="Main Character">Directing the group documentary and assigning arcs</option>
+            </select>
+
+            <label>3. Your food order is wrong. How do you handle it?</label>
+            <select name="Q3_Inconvenience" required>
+                <option value="" disabled selected>Select an option...</option>
+                <option value="Chaos Gremlin">Eat it anyway or steal someone else's food</option>
+                <option value="Cozy NPC">Quietly accept it because confrontation is terrifying</option>
+                <option value="Overthinker">Silently replay it for 3 hours wondering if I looked awkward</option>
+                <option value="Main Character">Politely get the manager and make it a movie scene</option>
+            </select>
+
+            <label>4. Pick a soundtrack for your life:</label>
+            <select name="Q4_Soundtrack" required>
+                <option value="" disabled selected>Select an option...</option>
+                <option value="Chaos Gremlin">Chaotic hyperpop or fast-paced EDM</option>
+                <option value="Cozy NPC">Lofi beats or acoustic indie folk</option>
+                <option value="Overthinker">Nostalgic playlist of songs from 2018</option>
+                <option value="Main Character">Dramatic cinematic orchestral tracks</option>
+            </select>
+
+            <button type="submit">Submit & Reveal My Vibe</button>
+        </form>
+    </div>
+</body>
+</html>
