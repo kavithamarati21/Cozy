@@ -3,68 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Which Late-Night Vibe Are You?</title>
+    <title>✨ Cozy Vibe Check 🧸💖</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #121212; color: #fff; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
-        .card { background: #1e1e1e; padding: 30px; border-radius: 12px; width: 100%; max-width: 500px; box-shadow: 0 4px 20px rgba(0,0,0,0.6); }
-        h2 { color: #bb86fc; margin-top: 0; text-align: center; }
-        p { color: #b0b0b0; text-align: center; margin-bottom: 25px; }
-        label { display: block; margin-top: 20px; font-weight: bold; color: #e0e0e0; }
-        input, select, button { width: 100%; padding: 12px; margin-top: 8px; border-radius: 6px; border: none; font-size: 15px; box-sizing: border-box; }
-        input, select { background: #2a2a2a; color: #fff; border: 1px solid #333; }
-        input:focus, select:focus { outline: none; border-color: #bb86fc; }
-        button { background: #bb86fc; color: #121212; cursor: pointer; font-weight: bold; margin-top: 30px; transition: background 0.2s; }
-        button:hover { background: #9965f4; }
+        body {
+            font-family: 'Segoe UI', cursive, sans-serif;
+            background: linear-gradient(135deg, #1f1a24, #2d1b36);
+            color: #fce4ec;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: rgba(45, 27, 54, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 182, 193, 0.3);
+        }
+        h2 {
+            color: #ffb6c1;
+            text-align: center;
+            margin-top: 0;
+            font-size: 26px;
+        }
+        .subtitle {
+            color: #d1c4e9;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .step {
+            display: none;
+        }
+        .step.active {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        label {
+            display: block;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #ffccd5;
+            font-size: 16px;
+            text-align: center;
+            line-height: 1.4;
+        }
+        input, select {
+            width: 100%;
+            padding: 14px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border-radius: 14px;
+            border: 1.5px solid #ffb6c1;
+            background: #251631;
+            color: #fff;
+            font-size: 15px;
+            box-sizing: border-box;
+            outline: none;
+            transition: all 0.3s;
+        }
+        input:focus, select:focus {
+            border-color: #ff85a1;
+            box-shadow: 0 0 12px rgba(255, 133, 161, 0.4);
+        }
+        .btn-group {
+            display: flex;
+            gap: 12px;
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            border-radius: 14px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.1s, background 0.2s;
+        }
+        .btn-next, .btn-submit {
+            background: linear-gradient(135deg, #ff85a1, #ffb6c1);
+            color: #2d1b36;
+            box-shadow: 0 4px 15px rgba(255, 133, 161, 0.3);
+        }
+        .btn-next:hover, .btn-submit:hover {
+            background: linear-gradient(135deg, #ff6b8b, #ff85a1);
+            transform: translateY(-2px);
+        }
+        .btn-back {
+            background: #3b284a;
+            color: #ffb6c1;
+            width: 40%;
+            border: 1px solid rgba(255, 182, 193, 0.2);
+        }
+        .btn-back:hover {
+            background: #4c335e;
+        }
+        .error-msg {
+            color: #ff8787;
+            text-align: center;
+            font-size: 13px;
+            margin-bottom: 12px;
+            display: none;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
+
     <div class="card">
-        <h2>Which Late-Night Vibe Are You?</h2>
-        <p>Answer honestly to expose your true friend group archetype.</p>
-        
-        <form action="https://formspree.io/f/xppqdvne" method="POST">
+        <h2>🌙✨ Cozy Vibe Check ✨🧸</h2>
+        <p class="subtitle">Let's legally expose your true group chat energy... 🕵️‍♀️💖</p>
+
+        <!-- Formspree Endpoint -->
+        <form id="quizForm" action="https://formspree.io/f/xppqdvne" method="POST">
             
-            <label>Your Name / Nickname:</label>
-            <input type="text" name="Friend_Name" required placeholder="Enter your name so I know who you are">
-            
-            <label>1. Friday night at 10 PM, what are you doing?</label>
-            <select name="Q1_Friday_Night" required>
-                <option value="" disabled selected>Select an option...</option>
-                <option value="Chaos Gremlin">Scrolling TikTok / waiting for crazy plans</option>
-                <option value="Cozy NPC">Already in pajamas under a blanket</option>
-                <option value="Overthinker">Staring at ceiling worrying about unread emails</option>
-                <option value="Main Character">Full skincare routine & lip-syncing into hairbrush</option>
-            </select>
+            <!-- STEP 1: Name -->
+            <div class="step active" id="step-1">
+                <label>🏷️ What should we call your cute/chaotic self?</label>
+                <input type="text" id="friendName" name="Friend_Name" placeholder="Type your cute nickname here... ✍️" autocomplete="off">
+                <div class="error-msg" id="err-1">⚠️ Please enter your name first, bestie! 🥺</div>
+                <button type="button" class="btn-next" onclick="nextStep(1)">Next Step ➔ 🚀</button>
+            </div>
 
-            <label>2. Stranded on a deserted island, your role is:</label>
-            <select name="Q2_Island_Role" required>
-                <option value="" disabled selected>Select an option...</option>
-                <option value="Chaos Gremlin">Building a makeshift fire with sketchy materials</option>
-                <option value="Cozy NPC">Finding the best shaded spot to nap and eating snacks</option>
-                <option value="Overthinker">Calculating wind velocity and escape probabilities</option>
-                <option value="Main Character">Directing the group documentary and assigning arcs</option>
-            </select>
+            <!-- STEP 2: Question 1 -->
+            <div class="step" id="step-2">
+                <label>⏰ 1. It's 3 AM. What are you doing in the group chat?</label>
+                <select name="Q1_3AM_Vibe" id="q1">
+                    <option value="" disabled selected>Select your midnight vibe... 👇</option>
+                    <option value="Chaos Gremlin">🤪 Sending unhinged TikToks with zero context</option>
+                    <option value="Cozy NPC">😴 Fast asleep, phone on DND wrapped like a burrito</option>
+                    <option value="Overthinker">📈 Typing a 4-paragraph deep text, then deleting it</option>
+                    <option value="Main Character">🌧️ Staring out the window pretending I'm in a sad indie movie</option>
+                </select>
+                <div class="error-msg" id="err-2">⚠️ Pick a vibe before moving forward! ✨</div>
+                <div class="btn-group">
+                    <button type="button" class="btn-back" onclick="prevStep(2)">← Back</button>
+                    <button type="button" class="btn-next" onclick="nextStep(2)">Next ➔ 💫</button>
+                </div>
+            </div>
 
-            <label>3. Your food order is wrong. How do you handle it?</label>
-            <select name="Q3_Inconvenience" required>
-                <option value="" disabled selected>Select an option...</option>
-                <option value="Chaos Gremlin">Eat it anyway or steal someone else's food</option>
-                <option value="Cozy NPC">Quietly accept it because confrontation is terrifying</option>
-                <option value="Overthinker">Silently replay it for 3 hours wondering if I looked awkward</option>
-                <option value="Main Character">Politely get the manager and make it a movie scene</option>
-            </select>
+            <!-- STEP 3: Question 2 -->
+            <div class="step" id="step-3">
+                <label>🍪 2. Your midnight snack drawer is audited. What's inside?</label>
+                <select name="Q2_Snacks" id="q2">
+                    <option value="" disabled selected>Select your snack profile... 👇</option>
+                    <option value="Chaos Gremlin">🗑️ Half-eaten random candy from 3 months ago</option>
+                    <option value="🧸 Cozy NPC">🧸 Warm tea packets, teddy-bear cookies, and comfort snacks</option>
+                    <option value="Overthinker">🥗 Strictly organized organic protein bars with calorie tags</option>
+                    <option value="Main Character">🍓 An aesthetic iced matcha latte and single macaron</option>
+                </select>
+                <div class="error-msg" id="err-3">⚠️ Don't hide your secret snacks, pick one! 👀</div>
+                <div class="btn-group">
+                    <button type="button" class="btn-back" onclick="prevStep(3)">← Back</button>
+                    <button type="button" class="btn-next" onclick="nextStep(3)">Next ➔ 🍰</button>
+                </div>
+            </div>
 
-            <label>4. Pick a soundtrack for your life:</label>
-            <select name="Q4_Soundtrack" required>
-                <option value="" disabled selected>Select an option...</option>
-                <option value="Chaos Gremlin">Chaotic hyperpop or fast-paced EDM</option>
-                <option value="Cozy NPC">Lofi beats or acoustic indie folk</option>
-                <option value="Overthinker">Nostalgic playlist of songs from 2018</option>
-                <option value="Main Character">Dramatic cinematic orchestral tracks</option>
-            </select>
+            <!-- STEP 4: Question 3 -->
+            <div class="step" id="step-4">
+                <label>🫠 3. How do you survive a moment of pure social awkwardness?</label>
+                <select name="Q3_Awkward" id="q3">
+                    <option value="" disabled selected>Select your survival tactic... 👇</option>
+                    <option value="Chaos Gremlin">👁️‍🗨️ Make intense eye contact and say something wildly weird</option>
+                    <option value="Cozy NPC">📱 Pretend to check my phone for a non-existent emergency</option>
+                    <option value="Overthinker">🧠 Analyze my posture, tone, and eye twitch for 4 business days</option>
+                    <option value="Main Character">💃 Sigh dramatically, hair flip, and pretend it never happened</option>
+                </select>
+                <div class="error-msg" id="err-4">⚠️ Almost done, pick your coping mechanism! 🤭</div>
+                <div class="btn-group">
+                    <button type="button" class="btn-back" onclick="prevStep(4)">← Back</button>
+                    <button type="button" class="btn-next" onclick="nextStep(4)">Next ➔ 🔥</button>
+                </div>
+            </div>
 
-            <button type="submit">Submit & Reveal My Vibe</button>
+            <!-- STEP 5: Question 4 -->
+            <div class="step" id="step-5">
+                <label>💖 4. Pick the ultimate emoji that describes your raw soul:</label>
+                <select name="Q4_Emoji" id="q4">
+                    <option value="" disabled selected>Select your soul emoji... 👇</option>
+                    <option value="Chaos Gremlin">💀 (Certified menace to society)</option>
+                    <option value="Cozy NPC">🧸 (Needs a blanket burrito immediately)</option>
+                    <option value="Overthinker">📊 (Stressed color-coded spreadsheet energy)</option>
+                    <option value="Main Character">✨ (Glitter, delusion, and main character aura)</option>
+                </select>
+                <div class="error-msg" id="err-5">⚠️ Select your soul emoji to finish! 👑</div>
+                <div class="btn-group">
+                    <button type="button" class="btn-back" onclick="prevStep(5)">← Back</button>
+                    <button type="submit" class="btn-submit">Reveal My Vibe! 🎉✨</button>
+                </div>
+            </div>
+
         </form>
     </div>
+
+    <script>
+        function nextStep(current) {
+            if (current === 1) {
+                let nameVal = document.getElementById('friendName').value.trim();
+                if (!nameVal) {
+                    document.getElementById('err-1').style.display = 'block';
+                    return;
+                }
+                document.getElementById('err-1').style.display = 'none';
+            } else {
+                let selectVal = document.getElementById('q' + (current - 1)).value;
+                if (!selectVal) {
+                    document.getElementById('err-' + (current)).style.display = 'block';
+                    return;
+                }
+                document.getElementById('err-' + (current)).style.display = 'none';
+            }
+
+            document.getElementById('step-' + current).classList.remove('active');
+            document.getElementById('step-' + (current + 1)).classList.add('active');
+        }
+
+        function prevStep(current) {
+            document.getElementById('step-' + current).classList.remove('active');
+            document.getElementById('step-' + (current - 1)).classList.add('active');
+        }
+    </script>
 </body>
 </html>
